@@ -98,11 +98,12 @@ def serverStart():
         print("There was a error while trying to open or bind the socket")
         serverClose(s)
     
-    while True:
-        if s:
-           connectionAccept(s)
+    while True:#Even tho the program gets the cient 0 massage and starts the closing process this while loop doesn't close.
+        connectionAccept(s)
+        if len(clients) == 0:
+           break
+    serverClose(s)
            
-    
 ###################################################################################
 
 def serverClose(s):
